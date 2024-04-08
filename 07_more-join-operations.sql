@@ -3,7 +3,7 @@
 -- This database features two entities (movies and actors) in a many-to-many relation. Each entity has its own table. A third table, casting , is used to link them. The relationship is many-to-many because each film features many actors and each actor has appeared in many films.
 -- movie(id, title, yr, director, budget, gross)
 -- actor(id, name)
--- castin(movieid, actorid, ord)
+-- casting(movieid, actorid, ord)
 --  --  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
 -- 1:
 -- List the films where the yr is 1962 [Show id, title]
@@ -54,3 +54,26 @@ FROM
     movie
 WHERE
     title = 'Casablanca';
+
+-- 6:
+--Obtain the cast list for 'Casablanca'.
+-- what is a cast list?
+-- Use movieid=11768, (or whatever value you got from the previous question)
+SELECT
+    name
+FROM
+    actor
+    JOIN casting ON (id = actorid)
+WHERE
+    movieid = 11768;
+
+-- 7: 
+-- Obtain the cast list for the film 'Alien'
+SELECT
+    name
+FROM
+    actor
+    JOIN casting ON (casting.actorid = actor.id)
+    JOIN movie ON (movie.id = casting.movieid)
+WHERE
+    title = 'Alien'
