@@ -31,7 +31,7 @@ WHERE
         FROM
             nobel
         WHERE
-            subject = "Medicine"
+            subject = 'Medicine'
     );
 
 
@@ -47,7 +47,7 @@ WHERE
 
 
 --5: Write a query that would show the year when neither a Physics or Chemistry award was given
-SELECT DISTINCT
+SELECT
     yr
 FROM
     nobel
@@ -58,7 +58,7 @@ WHERE
         FROM
             nobel
         WHERE
-            subject IN ("Physics", "Chemistry")
+            subject IN ('Physics', 'Chemistry')
     );
 
 
@@ -68,14 +68,14 @@ SELECT DISTINCT
 FROM
     nobel
 WHERE
-    subject = "Medicine"
+    subject = 'Medicine'
     AND yr NOT IN (
         SELECT
             yr
         FROM
             nobel
         WHERE
-            subject IN ("Peace", "Literature")
+            subject IN ('Peace', 'Literature')
     );
 
 
